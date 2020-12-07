@@ -1,0 +1,19 @@
+version: '3'     # version of docker compose
+services :       # build and or run all the services required for this application
+    node-app: # describe name of second container
+        build:     # find a docker file in current directory and build to create an image
+            context: .
+            dockerfile: Dockerfile.dev
+        ports: 
+            - "8080:3000"   # port mapping
+        volumes: 
+            - /app/node_modules
+            - .:/app
+    node-app-test: # describe name of second container
+        build:     # find a docker file in current directory and build to create an image
+            context: .
+            dockerfile: Dockerfile.dev        
+        volumes: 
+            - /app/node_modules
+            - .:/app
+        command: ["npm", "run", "test"]
