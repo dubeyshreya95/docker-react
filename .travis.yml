@@ -7,7 +7,7 @@ branches:
 services:
   - docker
 
-if: (type == push) OR (type == pull_request AND fork == true)
+if: (type == push) 
 
 before_install:
   - docker build -t sdubey/docker-react -f Dockerfile.dev .
