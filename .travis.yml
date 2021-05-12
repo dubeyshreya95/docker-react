@@ -1,9 +1,11 @@
-sudo: required     # anytime using docker we need to have super user permissions
-services: 
-   - docker
+sudo: required
+language: generic
+
+services:
+  - docker
 
 before_install:
-   - docker build -t sdubey/docker-react -f Dockerfile.dev.
-   
+  - docker build -t sdubey/docker-react -f Dockerfile.dev .
+
 script:
-   - docker run sdubey/docker-react npm run test -- --coverage
+  - docker run -e CI=true sdubey/docker-react npm run test
