@@ -1,6 +1,6 @@
 version: '3'     # version of docker compose
 services :       # build and or run all the services required for this application
-    node-app: # describe name of second container
+    node-app: # describe name of first container
         build:     # find a docker file in current directory and build to create an image
             context: .
             dockerfile: Dockerfile.dev
