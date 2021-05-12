@@ -1,8 +1,13 @@
 sudo: required
 language: generic
+branches:
+ only:
+ - master
 
 services:
   - docker
+
+if: (type == push) OR (type == pull_request AND fork == true)
 
 before_install:
   - docker build -t sdubey/docker-react -f Dockerfile.dev .
